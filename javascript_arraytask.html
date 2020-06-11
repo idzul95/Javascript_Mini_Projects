@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Array Task</title>
+
+	<script type="text/javascript">
+		var newSize;
+		function check() {
+			var userInput = document.getElementById('t1').value;
+			var mixedNumber = [12, 34, 9, 45, 2];
+			if (userInput > mixedNumber.length) {
+				alert("Invalid size!");
+			}
+			else if (isNaN(userInput)) {
+				alert("Numbers only!");
+			}
+			else {
+				newSize = mixedNumber.splice(0, userInput);
+				alert("Valid! Current array size is " + newSize.length
+					+ ". \nArray values are [" + newSize
+					+ "]\nHighest number is " + maxSize(newSize)
+					+ "\nSmallest number is " + minSize(newSize))
+			}
+
+			function maxSize(arr) {
+				return Math.max.apply(null, arr);
+			}
+			function minSize(arr) {
+				return Math.min.apply(null, arr);
+			}
+
+		}
+
+		/* function test(x){
+			x = document.getElementById('t1').value
+			return 4;
+		}
+		alert(test(x)); */
+	</script>
+</head>
+
+<body>
+	<form name="arrayForm">
+		<h1>Array Size Option</h1>
+		Enter your size for your array:
+		<input type="text" id="t1" name="subTxt">
+		<input type="button" value="Check" onclick="check()">
+		<!-- <input type="button" value="Test" onclick="alert(test(x))"> -->
+	</form>
+
+
+</body>
+
+</html>

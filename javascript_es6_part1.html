@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ES6 Features Task 1</title>
+<script type="text/javascript">
+
+ balanceMoney = () => {
+	 var generateBalance = function* (){
+			let balance1 = yield 1500; // yield acts as a stopper
+			let balance2 = yield 2000;
+			return 3750;  
+		 };
+	 const bal = generateBalance(); // const does not change variable value, 
+	 window.alert(bal.next().value); // next resumes the function
+	 window.alert(bal.next().value);
+	 window.alert(bal.next().value);
+ }
+
+
+withdrawMoney = () => {
+	withdrawAmount = (...amounts) =>{ // rest operator
+		let totalMoney = 10000;
+		for (let amount of amounts) totalMoney -= amount;
+		return totalMoney;
+	}
+	alert(withdrawAmount(1000, 2000, 3000));
+}
+
+
+depositMoney = () => {  // spread operator
+	let amountRange = [5000, 10000, 20000];
+	alert (Math.max(...amountRange));
+}
+
+</script>
+</head>
+<body>
+	<form>
+		<h1>Banking Test Application</h1>
+		<label>Amount Remaining After Withdrawal: </label>
+		<!-- <input type="text" name="withdraw" disabled="disabled"> -->
+		<button onclick="withdrawMoney()">Withdraw</button>
+		<pre></pre>
+		<label>Deposit Max Amount (Max. 20000): </label>
+		<!-- <input type="text" name="deposit" disabled="disabled"> -->
+		<button onclick="depositMoney()">Deposit</button>
+		<pre></pre>
+		<label>Generated Balance Amount : </label>
+		<!-- <p id="p1"></p> -->
+		<button onclick="balanceMoney()">Generate Balance</button>
+
+
+	</form>
+</body>
+
+
+</html>

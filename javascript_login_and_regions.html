@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login And Region Task</title>
+
+<script type="text/javascript">
+	
+		//closure variant
+		var deduct = (function() {
+			var counter = 3;
+			return function() {
+				counter -= 1;
+				return counter;
+			}
+		})();
+		
+		var maxLimit = (function() {
+			var counter = 3;
+			return function() {
+				counter -= 1;
+				return counter;
+			}
+		})();
+	
+		
+		function authenticatorLogin() {
+		
+		if (document.authenticatorLog.txtLogin.value === "user"
+				&& document.authenticatorLog.txtPass.value === "pass") {
+			//document.getElementById('1').innerHTML = "Login success!";
+			alert("Login success!")
+		} // end of if
+
+		else {
+			document.getElementById('head1').innerHTML = "Login Authenticator - "
+					+ deduct() + " tries!";
+			if (maxLimit() == 0) {
+				document.getElementById("b1").disabled = true;
+				document.getElementById("l1").disabled = true;
+				document.getElementById("p1").disabled = true;
+			} // end of if
+
+		} // end of else
+	} // end authylogin
+	
+	function hideReveal() {
+		  var currentType = document.getElementById("p1");
+		  if (currentType.type === "password") {
+			  currentType.type = "text"; 
+		  } else {
+			  currentType.type = "password";
+		  }
+		}
+
+
+	 function displayRegion(){
+	
+		var region = document.getElementById('regionList');
+		
+		region.options[0] = new Option(" ", " ");
+		region.options[1] = new Option("North", "North");
+		region.options[2] = new Option("West", "West");
+		region.options[3] = new Option("Central", "Central");
+		region.options[4] = new Option("East", "East");
+	}
+	
+	
+	function getArea(){
+		
+		var region = document.getElementById('regionList');
+		var area = document.getElementById("areaList");
+		var selectedRegion = region.options[region.selectedIndex].value;
+		
+		if (selectedRegion == "North"){
+			
+			area.options.length=0;
+			area.options[0] = new Option(" ", " ");
+			area.options[1] = new Option("Woodlands", "Woodlands");
+			area.options[2] = new Option("Sembawang", "Sembawang");
+			area.options[3] = new Option("Yishun", "Yishun");
+		}
+		
+		else if (selectedRegion == "West"){
+			area.options.length=0;
+			area.options[0] = new Option(" ", " ");
+			area.options[1] = new Option("Tuas", "Tuas");
+			area.options[2] = new Option("Boon Lay", "Boon Lay");
+			area.options[3] = new Option("Jurong East", "Jurong East");
+			area.options[4] = new Option("Bukit Batok", "Bukit Batok");
+		}
+		
+		else if (selectedRegion == "Central"){
+			area.options.length=0;
+			area.options[0] = new Option(" ", " ");
+			area.options[1] = new Option("Bukit Timah", "Bukit Timah");
+			area.options[2] = new Option("Queenstown", "Queenstown");
+			area.options[3] = new Option("Novena", "Novena");
+			area.options[4] = new Option("Bukit Merah", "Bukit Merah");
+		}
+		
+		else if (selectedRegion == "East"){
+			area.options.length=0;
+			area.options[0] = new Option(" ", " ");
+			area.options[1] = new Option("Bedok", "Bedok");
+			area.options[2] = new Option("Tampines", "Tampines");
+			area.options[3] = new Option("Pasir Ris", "Pasir Ris");
+			area.options[4] = new Option("Changi", "Changi");
+		}
+		
+		else {
+			area.options.length=0;
+			area.options[0] = new Option(" ", " ");
+		}
+		
+	} 
+</script>
+</head>
+
+<body onload="displayRegion()">
+	<form name="authenticatorLog">
+		<h1 id='head1'>Login Authenticator - 3 Tries!</h1>
+		Username : 
+		<input id="l1" type="text" name="txtLogin">
+		<br>
+		<br>
+		Password :  
+		<input id="p1" type="password" name="txtPass"> 
+		<br>
+		<br>
+		<input type="checkbox" onclick="hideReveal()">Show Password
+		<br>
+		<br>
+		<input type="button" id="b1" value="Login" onclick="authenticatorLogin()"> 
+		<p id="1">
+		<br>
+		<br>
+	</form>
+
+	<form name="regionSG">
+		<h1>Region Selection</h1>
+		Region Name: 
+		<select id="regionList" onclick="getArea()"></select> 
+		Area: 
+		<select id="areaList"></select>
+	</form>
+</body>
+</html>

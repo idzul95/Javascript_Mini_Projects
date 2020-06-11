@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Constructor Task</title>
+<style>
+	table, th, tr, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+</style>
+<script type="text/javascript">
+var id;
+
+class Person {
+	  constructor(first, last) {
+	    this.firstname = first;
+	    this.lastname = last;
+	    // console.log(`Created person ${this.firstname} ${this.lastname}`);
+	  }
+	  fullName() {
+	    return `${this.firstname} ${this.lastname}`;
+	  }
+	}
+
+	class Employee extends Person {
+	  constructor(_id, fn, ln) {
+	    super(fn, ln);
+	    this.id = _id;
+	    this._salary = 0;
+	  }
+	  get salary() {
+	    return this._salary;
+	  }
+	  set salary(s) {
+	    this._salary = s;
+	    return true;
+	  }
+	}
+	
+	function completeReg(){
+		id = document.getElementById("identity").value;
+		let fName = document.getElementById("first").value;
+		let lName = document.getElementById("last").value;
+		
+		let newEmp = new Employee(id, fName, lName);
+		
+		// Return a value between 2000 and 3000
+		newEmp.salary = Math.floor((Math.random() * 1000) + 2000);
+		let newSalary = newEmp.salary;
+		
+		window.alert("Welcome " + newEmp.fullName() + 
+				"\nYour ID is " + newEmp.id + "\nYour Salary is " +
+				newSalary);
+	}
+	
+	function generateId() {
+		id = document.getElementById("identity");
+		id.innerHTML = Math.floor((Math.random() * 999) + 1);
+	}
+
+</script>
+</head>
+<body>
+<form >
+<h1>Registration Form</h1>
+<p>Please fill up the following form.</p>
+<table>
+	<tr>
+		<th style="text-align: left"><label id="l1">ID: </label></th>
+		<td style="text-align: left"><output id="identity"></output></td>
+	</tr>
+	
+	<tr>
+		<th style="text-align: left"><label id="l1">First Name: </label></th>
+		<td style="text-align: left"><input type="text" id="first"></input></td>
+	</tr>
+	
+	<tr>
+		<th style="text-align: left"><label id="l2">Last Name: </label></th>
+		<td style="text-align: left"><input type="text" id="last"></input></td>
+	</tr>
+	
+</table>
+<br>
+<input type="button" id="b1" value="Complete" onclick="completeReg()"></input>
+<input type="button" id="b2" value="Generate ID" onClick="generateId()">
+</form>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>MCQ Questions and Display Images</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		function checkAnswer() {
+			var totalScore = 0;
+			var mcqAnswer = [ "c", "a", "b", "d", "a" ];
+			var answer1 = document.forms['myquestion']['c1'].value;
+			var answer2 = document.forms['myquestion']['c2'].value;
+			var answer3 = document.forms['myquestion']['c3'].value;
+			var answer4 = document.forms['myquestion']['c4'].value;
+			var answer5 = document.forms['myquestion']['c5'].value;
+
+			for (var i = 1; i <= 5; i++) {
+				if (eval('answer' + i) == '') {
+					alert("Please complete the following questions " + i);
+				}
+
+			}
+
+			for (var i = 1; i <= 5; i++) {
+				// eval() executes the code by concatenating the string
+				if (eval('answer' + i) == mcqAnswer[i - 1]) {
+					totalScore++;
+					document.getElementById("mcq").innerHTML = "Current score is "
+						+ totalScore;
+				}
+			}
+
+			// innerHTML is utilize since document.write will override the whole
+			// page
+			
+		} // end of checkAnswer
+
+		
+		
+		function displayImage1() {
+			document.getElementById('display1').src = 'IBM.png'
+			document.getElementById('display1').style="visibility: visible"
+			//document.getElementById('display1').style="width:500px"
+			//document.getElementById('display1').style="height:200px"
+		} // end of displayImage1
+		
+		function displayImage2() {
+			document.getElementById('display1').src = 'Oracle.png'
+			document.getElementById('display1').style="visibility: visible"
+			//document.getElementById('display1').style="width:500px"
+			//document.getElementById('display1').style="height:200px"
+		} // end of displayImage2
+		
+		function displayImage3() {
+			document.getElementById('display1').src = 'Optimum.png'
+			document.getElementById('display1').style="visibility: visible"
+			//document.getElementById('display1').style="width:500px"
+			//document.getElementById('display1').style="height:200px"
+		} // end of displayImage3
+		
+		function resetImage(){
+			document.getElementById('display1').src = ' '
+			document.getElementById('display1').style="visibility: hidden"
+			document.getElementById('1').checked = false;
+			document.getElementById('2').checked = false;
+			document.getElementById('3').checked = false;
+		} // end of resetImage
+		
+	</script>
+
+
+	<form name="myquestion">
+		<h1>MCQ Question</h1>
+		<p>1. What does POJO means?</p>
+		<input id ="a1" name="c1" type="radio" value="a">Plain Obsolete Java Object <br> 
+		<input id ="a2" name="c1" type="radio" value="b">Plain Old Java Obstacle <br> 
+		<input id ="a3" name="c1" type="radio" value="c">Plain Old Java Object <br> 
+		<input id ="a4" name="c1" type="radio" value="d">None of the above <br> <br>
+
+		<p>2. In which Java was Annotations first introduced?</p>
+		<input name="c2" type="radio" value="a">Java 5 <br> 
+		<input name="c2" type="radio" value="b">Java 6 <br> 
+		<input name="c2" type="radio" value="c">Java 7 <br> 
+		<input name="c2" type="radio" value="d">Java 8 <br> <br>
+
+		<p>3. Which of the following is not a primitive data type</p>
+		<input name="c3" type="radio" value="a">byte <br> 
+		<input name="c3" type="radio" value="b">String <br> 
+		<input name="c3" type="radio" value="c">double <br> 
+		<input name="c3" type="radio" value="d">float <br><br>
+
+		<p>4. In JavaScript, what does the alert() method do?</p>
+		<input name="c4" type="radio" value="a">Starts a dialog box
+		with a specified message <br> 
+		<input name="c4" type="radio" value="b">Notify a sleeping thread <br>
+		<input name="c4" type="radio" value="c">Display a dialog box that prompts the visitor for input <br> 
+		<input name="c4" type="radio" value="d">Displays an alert box with a specific message <br><br>
+
+		<p>5. Which of the following variable has the longest scope?</p>
+		<input name="c5" type="radio" value="a">Static variable <br>
+		<input name="c5" type="radio" value="b">Local variable <br>
+		<input name="c5" type="radio" value="c">Parameter variable <br>
+		<input name="c5" type="radio" value="d">None of the above <br>
+		<br>
+		<p id="mcq"></p>
+		<input type="button" value="Submit" onclick="checkAnswer()" />
+	</form><br>
+	
+	<!-- having the same name for the radiobutton will allow
+one choice to be selected -->
+
+	<form>
+	<h1>Display Images</h1>
+		<input id = '1' type="radio" name="c6" onclick="displayImage1()">IBM<br>
+		<input id = '2' type="radio" name="c6" onclick="displayImage2()">Oracle<br>
+		<input id = '3' type="radio" name="c6" onclick="displayImage3()">Optimum<br><br>
+		<input type="button" value="Reset" onclick="resetImage()"><br><br>
+
+		<img id='display1' src=" " width="500" height="200" style="visibility: hidden">
+	</form>
+
+</body>
+</html>

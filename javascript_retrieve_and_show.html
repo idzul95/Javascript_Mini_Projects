@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Retrieve And Show</title>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+
+<script type="text/javascript">
+	function printFinal() {
+		var i, totalUserData;
+		var userData = [];
+		var fixedData = [ "Description", "Name", "Company Name", "Location",
+				"Age", "Email", "Registration No." ];
+
+		totalUserData = 6;
+
+		userData[0] = "Data";
+		for (i = 1; i <= totalUserData; i++) {
+			userData[i] = document.getElementById("t" + i).value;
+		}
+
+		var createTable = document.getElementById("outputData");
+
+		var createRow = createTable.insertRow(0);
+		var firstCol = createRow.insertCell(0);
+		var secondCol = createRow.insertCell(1);
+
+		userData.forEach(userDataArray)
+		fixedData.forEach(fixedDataArray)
+
+		function userDataArray(item, index) {
+			secondCol.innerHTML += item + "<br>";
+		}
+
+		function fixedDataArray(item, index) {
+			firstCol.innerHTML += item + "<br>";
+		}
+
+	}
+
+	function clearResult() {
+		var clearTable = document.getElementById("outputData");
+		clearTable.innerHTML = "";
+	}
+</script>
+
+
+</head>
+
+<body>
+	<form name="retrieveData">
+		<h1>Fill In Your Particulars</h1>
+		<table style="width: 31%">
+			<tr>
+				<th style="text-align: left"><label for="t1">Name</label></th>
+				<th style="text-align: left"><input type="text" id="t1" required></th>
+			</tr>
+
+			<tr>
+				<th style="text-align: left"><label for="t2">Company Name</label></th>
+				<th style="text-align: left"><input type="text" id="t2" required></th>
+			</tr>
+
+			<tr>
+				<th style="text-align: left"><label for="t3">Location</label></th>
+				<th style="text-align: left"><input type="text" id="t3" required></th>
+			</tr>
+
+			<tr>
+				<th style="text-align: left"><label for="t4">Age</label></th>
+				<th style="text-align: left"><input type="text" id="t4" required></th>
+			</tr>
+
+			<tr>
+				<th style="text-align: left"><label for="t5">Email</label></th>
+				<th style="text-align: left"><input type="text" id="t5" required></th>
+			</tr>
+
+			<tr>
+				<th style="text-align: left"><label for="t6">Registration
+						No.</label></th>
+				<th style="text-align: left"><input type="text" id="t6" required></th>
+			</tr>
+
+		</table>
+		<br> 
+		<input type="button" value="Submit" onclick="printFinal()">
+		<input type="reset"> 
+		<input type="button" value="Clear Results" onclick="clearResult()"> 
+		<br>
+		<h1>Output</h1>
+		<table id="outputData"></table>
+	</form>
+
+</body>
+</html>
