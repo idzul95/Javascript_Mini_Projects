@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Constructor Task</title>
+<style>
+	table tr, td {
+		border : 1px solid black;
+		border-style : collapse;
+	}
+</style>
+<script type="text/javascript">
+
+ function Register(user, pass, repass, email){
+	this.user = user;
+	this.pass = pass;
+	this.repass = repass;
+	this.email = email;
+}
+
+completeReg = () => {
+	let user2 = " ";
+	let pass2 = " ";
+	let repass2 = " ";
+	let email2 = " ";
+	
+	user2 = document.getElementById("u1").value;
+	pass2 = document.getElementById("p1").value;
+	repass2 = document.getElementById("rp1").value;
+	email2 = document.getElementById("e1").value;
+	
+	var newRegistrant = new Register(user2, pass2, repass2, email2);
+	
+	window.alert("Welcome " + user2);
+} 
+</script>
+</head>
+
+<body>
+<form >
+<h1>Registration Form</h1>
+<p>Please fill up the following form.</p>
+<table>
+	<tr>
+		<td style="text-align: left"><label id="l1">Username: </label></td>
+		<td style="text-align: left"><input type="text" id="u1"></input></td>
+	</tr>
+	
+	<tr>
+		<td style="text-align: left"><label id="l2">Password: </label></td>
+		<td style="text-align: left"><input type="text" id="p1"></input></td>
+	</tr>
+	
+	<tr>
+		<td style="text-align: left"><label id="l3">Re-Type Password: </label></td>
+		<td style="text-align: left"><input type="text" id="rp1"></input></td>
+	</tr>
+	
+	<tr>
+		<td style="text-align: left"><label id="l4">Email: </label></td>
+		<td style="text-align: left"><input type="text" id="e1"></input></td>
+	</tr>
+</table>
+<br>
+<input type="button" id="b1" value="Complete" onclick="completeReg()"></input>
+
+</form>
+</body>
+</html>

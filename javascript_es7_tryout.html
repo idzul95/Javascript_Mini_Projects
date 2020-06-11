@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>ES7 Features Try-out</title>
+	<style>
+		table,
+		th,
+		td,
+		tr {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+	</style>
+	<script type="text/javascript">
+		var custList = ["Mikael", "Robert", "Fairuz", "Yang", " "];
+		function showCust() {
+			document.getElementById("o1").innerHTML = custList;
+		}
+		function enterToSubmit() {
+			//if (custList.indexOf(" ")){
+			if (custList.includes(document.getElementById("c1").value)) {
+				document.getElementById("o2").innerHTML = document.getElementById("c1").value +
+					" is on the list!";
+			}
+			else
+				document.getElementById("o2").innerHTML = document.getElementById("c1").value
+					+ " is not on the list!";
+		}
+
+		function expoExample() {
+			let x = document.getElementById("e1").value;
+			let y = document.getElementById("e2").value;
+
+			let result = x ** y;
+
+			document.getElementById("o1").innerHTML = "Your results are " + result;
+			document.getElementById("o2").innerHTML = "Exponentiation is basically x to the power y";
+		}
+	</script>
+
+</head>
+
+<body>
+	<form name="customerForm">
+		<h1>Customer List</h1>
+		<table style="width: 35%">
+			<tr>
+				<th style="text-align: left"><label>Show customer</label></th>
+				<th style="text-align: center;"><input type="button" onclick="showCust()" id="b1"
+						style="text-align: left" value="Show Customer"></input></th>
+			</tr>
+			<tr>
+				<th style="text-align: left"><label>Find customer</label></th>
+				<td style="text-align: left"><input type="text" id="c1"></input></td>
+			</tr>
+			<tr>
+				<th>What is Exponentiation, </th>
+				<th>key in the values of x and y</th>
+			</tr>
+			<tr>
+				<th style="text-align: left"><label>Value of x: </label></th>
+				<td style="text-align: left"><input type="text" id="e1"></input></td>
+			</tr>
+			<tr>
+				<th style="text-align: left"><label>Value of y: </label></th>
+				<td style="text-align: left"><input type="text" id="e2"></input></td>
+			</tr>
+		</table>
+		<br></br>
+		<input type="button" onclick="enterToSubmit()" value="Check"></input>
+		<input type="button" onclick="expoExample()" value="Exponentiation"></input>
+		<br></br>
+		<br></br>
+		<h1>Output</h1>
+		<label id="o1"></label>
+		<br></br>
+		<label id="o2"></label>
+	</form>
+</body>
+
+</html>

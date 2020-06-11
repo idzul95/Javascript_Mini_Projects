@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Closure Example</title>
+<script type="text/javascript">
+
+var addTo = function(outer){
+	var add = function(inner){
+		return outer+inner;
+	}
+	return add;
+}
+
+var addTwo = new addTo(2); // pass value to outer function
+window.alert(addTwo(2)); // pass value to the inner
+
+</script>
+
+</head>
+<body>
+</body>
+</html>

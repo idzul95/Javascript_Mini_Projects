@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ES8 Features Try-out</title>
+<style>
+	table, th, td, tr {
+		border: 1px solid black;
+		border-collapse: collapse; 
+	}
+</style>
+<script type="text/javascript">
+
+sendMsg = () => {
+	
+	let fName = document.getElementById("t1").value; 
+	let lName = document.getElementById("t2").value;
+	let resident = document.getElementById("t3").value;
+	let email = document.getElementById("t4").value;
+	let mobile = document.getElementById("t5").value;
+	let cBox = document.getElementById("c1");
+	
+	if (!fName == " " && !lName == " " && !resident == " " && 
+			!email == " " && !mobile == " " && cBox.checked == true){
+		document.getElementById("b2").disabled = false;
+	}
+	else{
+		window.alert("Please fill up your particulars and check the box");
+		cBox.checked = false;
+	} 
+	
+}	
+	async function receiveOTP() {
+		// creating a reference object using promise constructor
+	let promiseOTP = new Promise(function(resolve, reject){ 
+		// simulate receiving OTP 
+		// alt setTimeout(function(){resolve("Your OTP is 45313")}, 2000)
+		setTimeout(() => resolve("Your OTP is 45313"), 2000)
+	});
+		// receive the the promise value after timeout
+		let outcomeOTP = await promiseOTP;
+		// alt window.alert(await promiseOTP);
+		window.alert(outcomeOTP);
+} 
+
+</script>
+</head>
+<body>
+<form>
+<h1>Credit Card Application</h1>
+<table style="width: 35%">
+<tr>
+	<th style="text-align: left"><label>First Name: </label></th>
+	<td style="text-align: left"><input id="t1" type="text" style="width: 98%" required="required"></input></td>
+</tr>
+<tr>
+	<th style="text-align: left"><label>Last Name: </label></th>
+	<td style="text-align: left"><input id="t2" type="text" style="width: 98%" required="required"></input></td>
+</tr>
+<tr>
+	<th style="text-align: left"><label>Residential Address: </label></th>
+	<td style="text-align: left"><input id="t3" type="text" style="width: 98%" required="required"></input></td>
+</tr>
+
+<tr>
+	<th style="text-align: left"><label>Email Address: </label></th>
+	<td style="text-align: left"><input id="t4" type="text" style="width: 98%" required="required"></input></td>
+</tr>
+
+<tr>
+	<th style="text-align: left"><label>Mobile Number: </label></th>
+	<td style="text-align: left"><input id="t5" type="text" style="width: 98%" required="required"></input></td>
+</tr>
+</table>
+
+<br></br>
+<input type="checkbox" id="c1" onclick="sendMsg()" ></input>
+	<label>
+		I have read Customer Declaration of OCBC 365 
+		<br> 
+		Credit Card and understood all its terms and conditions. 
+		<br>
+		I confirm that details given above belong to me and 
+		<br>
+		authorize OCBC and its affiliates or associates 
+		<br>
+		to contact me on the details provided.
+	</label>
+<br></br>
+<input type="button" id="b2" value="Send OTP" disabled="disabled" onclick="receiveOTP()"></input>
+</form>
+</body>
+</html>
